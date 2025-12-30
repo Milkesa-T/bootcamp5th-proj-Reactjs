@@ -1,4 +1,4 @@
-import { useTasks } from '../store/taskContextLogic';
+import { useTasks } from '../store/taskContext';
 export default function TaskItem({ task }) {
   const { deleteTask, toggleTask } = useTasks();
 
