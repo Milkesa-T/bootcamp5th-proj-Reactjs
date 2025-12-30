@@ -9,4 +9,5 @@ export default function Home() {
     </main>
   );
 }
-console.log("HOME MOUNTED");
+
+
