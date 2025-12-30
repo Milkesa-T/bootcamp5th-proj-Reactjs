@@ -1,17 +1,26 @@
-import { Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
-import Home from "./pages/Home";
-import Stats from "./pages/Stats";
+import { Link } from 'react-router-dom';
+import { useTasks } from '../store/taskContext';
 
-export default function App() {
+export default function Header() {
+  const { darkMode, setDarkMode } = useTasks();
+
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
-      <Header />
+    <header className="flex justify-between items-center p-4 bg-gray-100 dark:bg-gray-800 shadow-md">
+      <h1 className="text-2xl font-bold dark:text-white">Task Tracker</h1>
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/stats" element={<Stats />} />
-      </Routes>
-    </div>
+      <nav className="space-x-4">
+        <Link to="/" className="dark:text-gray-300">Home</Link>
+        <Link to="/stats" className="dark:text-gray-300">Stats</Link>
+
+        {/* 🔥 THIS LINE FIXES EVERYTHING */}
+        <button
+          type="button"
+          onClick={() => setDarkMode(!darkMode)}
+          className="p-2 rounded bg-gray-300 dark:bg-gray-600"
+        >
+          {darkMode ? '☀️' : '🌙'}
+        </button>
+      </nav>
+    </header>
   );
 }
